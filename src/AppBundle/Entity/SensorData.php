@@ -2,8 +2,6 @@
 
 namespace AppBundle\Entity;
 
-use Doctrine\ORM\Mapping as ORM;
-
 /**
  * SensorData
  *
@@ -24,7 +22,7 @@ class SensorData
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="created", type="datetime")
+     * @ORM\Column(name="created", type="text")
      */
     private $created;
 
@@ -34,6 +32,12 @@ class SensorData
      * @ORM\Column(name="data", type="text")
      */
     private $data;
+
+    public function __construct($data)
+    {
+        $this->created = date( 'Y-m-d H:i:s');
+        $this->data = json_encode($data,10);
+    }
 
 
     /**
