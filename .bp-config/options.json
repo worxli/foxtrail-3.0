@@ -1,0 +1,17 @@
+{
+  "PHP_VM": "php",
+  "HHVM_VERSION": "3.6.1",
+  "PHP_VERSION": "{PHP_55_LATEST}",
+  "ZEND_EXTENSIONS": [
+    "opcache"
+  ],
+  "PHP_EXTENSIONS": [
+  ],
+  "WEBDIR": "web",
+  "COMPOSER_VENDOR_DIR": "vendor",
+  "COMPOSER_INSTALL_OPTIONS": [
+    "--no-dev",
+    "--no-interaction",
+    "--prefer-dist"
+  ]
+}

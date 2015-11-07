@@ -1,0 +1,8 @@
+applications:
+    - name: foxtrail
+
+#services:
+ #  - foxtrail
+
+env:
+    SYMFONY_ENV: prod
