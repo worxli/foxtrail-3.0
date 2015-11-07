@@ -34,12 +34,19 @@ class SensorController extends Controller
         if ($request->getMethod() == 'POST') {
             $data = $request->getContent();
 
-            $encoders = array(new JsonEncoder());
+        /*    $encoders = array(new JsonEncoder());
             $normalizers = array(new ObjectNormalizer());
+            $serializer = new Serializer($normalizers, $encoders);*/
 
-            $serializer = new Serializer($normalizers, $encoders);
+            $xml = $this->get("request")->getContent();
+            $dataObj = simplexml_load_string ($xml); 
+            $payload_hex = $dataObj->payload_hex;
 
-            $data = $this->get("request")->getContent();
+            $hex_array = str_split ($payload_hex,2);
+            $dec_array = array_map("hexdec", $hex_array);
+
+
+            $data = date( 'Y-m-d H:i:s').' - hex: '.$payload_hex. '\n: '. implode(' - ', $dec_array);
             //$sensorData = new SensorData($serializer->serialize($request->request, 'json'));
             //$logger->info($serializer->serialize($request->request, 'json'));
 
