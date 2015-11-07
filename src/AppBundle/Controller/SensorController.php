@@ -44,9 +44,9 @@ class SensorController extends Controller
 
             $hex_array = str_split ($payload_hex,2);
             $dec_array = array_map("hexdec", $hex_array);
+            $dec_array = array_diff($dec_array, array(0, '0'));
 
-
-            $data = date( 'Y-m-d H:i:s').' - hex: '.$payload_hex. '\n: '. implode(' - ', $dec_array);
+            $data = date( 'Y-m-d H:i:s')." - hex: ".$payload_hex. "\n". implode(' - ', $dec_array);
             //$sensorData = new SensorData($serializer->serialize($request->request, 'json'));
             //$logger->info($serializer->serialize($request->request, 'json'));
 
